@@ -19,7 +19,8 @@ RUN apt update \
     git \
     python \
     python3 \
-    curl
+    curl \
+    vim
 
 
 ENV PATH /usr/local/sbin:/usr/local/bin:$PATH
@@ -53,14 +54,23 @@ ENV JULIA_VER $JULIA_VER_MAJ$JULIA_VER_MIN
 RUN wget https://github.com/JuliaLang/julia/releases/download/v$JULIA_VER/julia-$JULIA_VER-full.tar.gz \
 		&& tar xf julia-$JULIA_VER-full.tar.gz
 
+RUN apt -y install openssl libssl-dev
+
 RUN cd julia-$JULIA_VER \
-	&& make -j"$(nproc --all)" \
+	&& make -j"$(nproc --all)" julia-deps
+
+RUN cd julia-$JULIA_VER \
+	&& make -j"$(nproc --all)"
+
+RUN cd julia-$JULIA_VER \
+	&& echo "prefix=/usr/local/julia" >> Make.user \
 	&& make -j"$(nproc --all)" install \
-	&& ln -s /usr/local/julia/bin/julia /usr/local/bin/julia \
-	&& cd .. \
-	&& rm -rf julia-$JULIA_VER && rm -f julia-$JULIA_VER-full.tar.gz && rm -rf cpuid
+	&& ln -s /usr/local/julia/bin/julia /usr/local/bin/julia 
+
+RUN rm -rf julia-$JULIA_VER && rm -f julia-$JULIA_VER-full.tar.gz
 
 ENV JULIA_PKGDIR /usr/local/julia/share/julia/site
 
 # Init package folder on root's home folder
 RUN julia -e 'Pkg.init()'
+
