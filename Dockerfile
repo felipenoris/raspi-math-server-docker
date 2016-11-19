@@ -74,3 +74,31 @@ ENV JULIA_PKGDIR /usr/local/julia/share/julia/site
 # Init package folder on root's home folder
 RUN julia -e 'Pkg.init()'
 
+# pip
+RUN apt -y install python-pip python3-pip
+
+RUN pip2 install -U pip
+
+RUN pip3 install -U pip
+
+RUN apt -y install python-dev python3-dev libzmq3 libzmq3-dev
+
+# Jupyter
+RUN pip2 install \
+	IPython \
+	notebook \
+	ipykernel \
+	ipyparallel \
+	enum34 \
+	&& python2 -m ipykernel install
+
+RUN pip3 install \
+	IPython \
+	jupyterhub \
+	notebook \
+	ipykernel \
+	ipyparallel \
+	enum34 \
+	&& python3 -m ipykernel install
+
+RUN npm install -g configurable-http-proxy
