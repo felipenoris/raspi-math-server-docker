@@ -28,7 +28,7 @@ $ sudo su
 (5) After rebooting, follow these commands:
 
 ```
-# sudo su
+$ sudo su
 
 # curl -sSL get.docker.com | sh
 
