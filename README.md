@@ -20,9 +20,15 @@ $ sudo su
 
 # apt -y upgrade
 
+# apt -y install git
+
 # echo "gpu_mem=16" >> /boot/config.txt
 
 # echo "CONF_SWAPSIZE=1000" >> /etc/dphys-swapfile
+
+# curl -sSL get.docker.com | sh
+
+# usermod -aG docker pi
 
 # reboot
 ```
@@ -30,20 +36,11 @@ $ sudo su
 (5) After rebooting, follow these commands:
 
 ```
+$ git clone https://github.com/felipenoris/raspi-math-server-docker.git
 
-$ sudo su
+$ cd raspi-math-server-docker/contrib
 
-# apt -y install git
-
-# cd
-
-# git clone https://github.com/felipenoris/raspi-math-server-docker.git
-
-# cd raspi-math-server-docker/contrib
-
-# chmod +x raspbian_bootstrap.sh
-
-# ./raspbian_bootstrap.sh
+$ nohup docker build -t math-server:latest . &
 
 ```
 
