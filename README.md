@@ -42,7 +42,7 @@ $ sudo su
 ```
 $ git clone https://github.com/felipenoris/raspi-math-server-docker.git
 
-$ cd raspi-math-server-docker/contrib
+$ cd raspi-math-server-docker
 
 $ nohup docker build -t math-server:latest . &
 
