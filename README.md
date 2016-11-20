@@ -1,7 +1,6 @@
 # raspi-math-server-docker
-Raspbian version of The ideal multi-user Data Science server [math-server-docker](github.com/felipenoris/math-server-docker)
 
-**WIP**
+Raspbian version of the ideal multi-user Data Science server [math-server-docker](github.com/felipenoris/math-server-docker).
 
 # Raspberry Pi 3 Setup
 
