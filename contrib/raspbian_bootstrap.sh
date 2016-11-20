@@ -19,5 +19,5 @@ apt-cache policy docker-engine
 apt-get -y install docker-engine
 service docker start
 
-# Optional: Add your user to docker group
-# sudo usermod -aG docker $USER
+# Optional: Add user pi to docker group
+usermod -aG docker pi
