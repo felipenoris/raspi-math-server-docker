@@ -96,3 +96,16 @@ RUN pip3 install \
 	&& python3 -m ipykernel install
 
 RUN npm install -g configurable-http-proxy
+
+# TeX
+ADD texlive.profile texlive.profile
+
+# non-interactive http://www.tug.org/pipermail/tex-live/2008-June/016323.html
+# Official link: http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+RUN wget http://mirrors.rit.edu/CTAN/systems/texlive/tlnet/install-tl-unx.tar.gz \
+	&& mkdir install-tl \
+	&& tar xf install-tl-unx.tar.gz -C install-tl --strip-components=1 \
+	&& ./install-tl/install-tl -profile ./texlive.profile --location http://mirrors.rit.edu/CTAN/systems/texlive/tlnet \
+	&& rm -rf install-tl && rm -f install-tl-unx.tar.gz
+
+ENV PATH /usr/local/texlive/distribution/bin/x86_64-linux:$PATH
