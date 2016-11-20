@@ -16,15 +16,20 @@ Raspbian version of The ideal multi-user Data Science server [math-server-docker
 ```
 $ sudo su
 
-# apt update
-
-# apt -y upgrade
-
-# apt -y install git
+# apt update && apt -y upgrade && apt -y install git
 
 # echo "gpu_mem=16" >> /boot/config.txt
 
 # echo "CONF_SWAPSIZE=1000" >> /etc/dphys-swapfile
+
+# reboot
+
+```
+
+(5) After rebooting, follow these commands:
+
+```
+# sudo su
 
 # curl -sSL get.docker.com | sh
 
@@ -33,7 +38,7 @@ $ sudo su
 # reboot
 ```
 
-(5) After rebooting, follow these commands:
+(6) After rebooting, follow these commands:
 
 ```
 $ git clone https://github.com/felipenoris/raspi-math-server-docker.git
