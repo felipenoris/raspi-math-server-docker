@@ -108,4 +108,5 @@ RUN wget http://mirrors.rit.edu/CTAN/systems/texlive/tlnet/install-tl-unx.tar.gz
 	&& ./install-tl/install-tl -profile ./texlive.profile --location http://mirrors.rit.edu/CTAN/systems/texlive/tlnet \
 	&& rm -rf install-tl && rm -f install-tl-unx.tar.gz
 
-ENV PATH /usr/local/texlive/distribution/bin/x86_64-linux:$PATH
+ENV PATH /usr/local/texlive/distribution/bin/armhf-linux:$PATH
+
