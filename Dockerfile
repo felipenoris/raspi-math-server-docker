@@ -110,3 +110,13 @@ RUN wget http://mirrors.rit.edu/CTAN/systems/texlive/tlnet/install-tl-unx.tar.gz
 
 ENV PATH /usr/local/texlive/distribution/bin/armhf-linux:$PATH
 
+####################
+## Services
+####################
+
+# 8000 for Jupyter
+EXPOSE 8000
+
+ADD jupyterhub_config.py jupyterhub_config.py
+
+CMD jupyterhub --no-ssl -f jupyterhub_config.py
