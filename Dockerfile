@@ -42,7 +42,7 @@ RUN pip3 install -U pip
 RUN git config --global url."https://".insteadOf git://
 
 # node
-ENV NODE_VER 7.2.0
+ENV NODE_VER 7.7.1
 
 RUN wget https://github.com/nodejs/node/archive/v$NODE_VER.tar.gz \
     && tar xf v$NODE_VER.tar.gz && cd node-$NODE_VER \
@@ -60,7 +60,7 @@ RUN apt -y install r-base r-base-core r-base-dev
 
 # Julia
 ENV JULIA_VER_MAJ 0.5
-ENV JULIA_VER_MIN .0
+ENV JULIA_VER_MIN .1
 ENV JULIA_VER $JULIA_VER_MAJ$JULIA_VER_MIN
 
 RUN wget https://github.com/JuliaLang/julia/releases/download/v$JULIA_VER/julia-$JULIA_VER-full.tar.gz \
