@@ -42,7 +42,7 @@ RUN pip3 install -U pip
 RUN git config --global url."https://".insteadOf git://
 
 # node
-ENV NODE_VER 7.7.1
+ENV NODE_VER 7.6.0
 
 RUN wget https://github.com/nodejs/node/archive/v$NODE_VER.tar.gz \
     && tar xf v$NODE_VER.tar.gz && cd node-$NODE_VER \
